@@ -44,7 +44,7 @@ This project was built with Unity 2022.3.7f1.
     - Import it into Unity.
     - Drag and position the map file in the `Map File` slot of the `ARMap` GameObject in the scene.
 
-   <img width="700" alt="ARMap" src="https://github.com/holoi/immersal-holokit-samples/assets/44870300/084bc554-5aaa-4bdc-a574-4e3d54ccb5e6">
+   <img width="700" alt="ARMap" src="https://github.com/holoi/immersal-holokit-samples/assets/44870300/4aa55c1c-84c8-4ec3-b939-470895705b46">
 
    When building, ensure `Immersal_HoloKit_MultiplayerAR` is the only selected scene.
 
