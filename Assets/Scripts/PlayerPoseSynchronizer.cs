@@ -21,10 +21,20 @@ public class PlayerPoseSynchronizer : NetworkBehaviour
 
     private NetworkVariable<Quaternion> m_RelativeRotation = new(default, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
+    private HoloKitMarkController m_HoloKitMark;
+
     private void Start()
     {
-        var holokitMark = Instantiate(m_HoloKitMarkPrefab);
-        holokitMark.PlayerPoseSynchronizer = transform;
+        m_HoloKitMark = Instantiate(m_HoloKitMarkPrefab);
+        m_HoloKitMark.PlayerPoseSynchronizer = transform;
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+
+        if (m_HoloKitMark)
+            Destroy(m_HoloKitMark.gameObject);
     }
 
     public override void OnNetworkSpawn()
