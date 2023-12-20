@@ -1,4 +1,4 @@
-# HoloKit Multiplayer Boilerplate
+# HoloKit Multiplayer AR Boilerplates
 
 ## Overview
 
@@ -15,6 +15,15 @@ We offer two boilerplates, one for each "cold start" and "absolute coordinate" a
 HoloKit is an optioinal tool that provides stereoscopic rendering capabilities, but you can build your mobile AR project without HoloKit using these samples. 
 
 ## Project Environment
+
+Please be aware that these boilerplates are designed exclusively for iOS devices.
+
+We have successfully tested them with the following software versions:
+
+- Unity 2023.2.2f1
+- Xcode 15.1 beta 3
+
+In theory, other versions of Unity and Xcode that are close to these should also be compatible. However, if you encounter any issues during the build process, feel free to raise an issue in the repository.
 
 ## Image Tracking Relocalization Sample
 
