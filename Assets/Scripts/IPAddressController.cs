@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: Copyright 2023 Holo Interactive <dev@holoi.com>
+// SPDX-FileContributor: Yuchen Zhang <yuchenz27@outlook.com>
+// SPDX-License-Identifier: MIT
+
 using UnityEngine;
 using Unity.Netcode.Transports.UTP;
 

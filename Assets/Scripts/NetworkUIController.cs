@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: Copyright 2023 Holo Interactive <dev@holoi.com>
+// SPDX-FileContributor: Yuchen Zhang <yuchenz27@outlook.com>
+// SPDX-License-Identifier: MIT
+
 using UnityEngine;
 using Unity.Netcode;
 using HoloInteractive.XR.HoloKit;
@@ -13,6 +17,8 @@ public class NetworkUIController : MonoBehaviour
     [SerializeField] GameObject m_StartClientButton;
 
     [SerializeField] GameObject m_ShutdownButton;
+
+    [SerializeField] GameObject m_FireButton;
 
     [SerializeField] GameObject m_IPInputField;
 
@@ -41,6 +47,7 @@ public class NetworkUIController : MonoBehaviour
             m_StartHostButton.SetActive(false);
             m_StartClientButton.SetActive(false);
             m_ShutdownButton.SetActive(true);
+            m_FireButton.SetActive(true);
 
             m_IPInputField.SetActive(false);
 
@@ -57,6 +64,7 @@ public class NetworkUIController : MonoBehaviour
             m_StartHostButton.SetActive(true);
             m_StartClientButton.SetActive(true);
             m_ShutdownButton.SetActive(false);
+            m_FireButton.SetActive(false);
 
             m_IPInputField.SetActive(m_TransportSelector.CurrentTransport == AvailableTransport.Router);
 
@@ -95,8 +103,6 @@ public class NetworkUIController : MonoBehaviour
 
     public void StartClient()
     {
-        Debug.Log("Start Client");
-
         NetworkManager.Singleton.StartClient();
     }
 
