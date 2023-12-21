@@ -12,6 +12,10 @@ There are primarily two types of AR localization mechanisms: the "cold start" ap
 
 We offer two boilerplates: one for the "cold start" approach and another for the "absolute coordinate" approach. For "cold start" cases, we use the [Image Tracking Relocalization package](https://github.com/holoi/com.holoi.xr.image-tracking-relocalization) for coordinate system synchronization. For "absolute coordinate" cases, we employ the [Immersal SDK](https://immersal.gitbook.io/sdk/), which enables users to pre-scan the environment and create point cloud map data on the cloud. This facilitates large-scale pre-scanned AR tracking.
 
+Apart from differing in their approach to coordinate system synchronization, the two boilerplates share a majority of their codebase in other aspects.
+
+These boilerplates are specifically designed for multiplayer AR experiences and require knowledge in networking programming, with a particular emphasis on Unity's Netcode for GameObjects. Multiplayer development fundamentally differs from single-player game development, necessitating a network-centric approach in both design and implementation. For thoese new to Netcode for GameObjects, we recommend familiarizing yourself with its [documentation](https://docs-multiplayer.unity3d.com/netcode/current/about/).
+
 HoloKit is an optioinal tool that provides stereoscopic rendering capabilities, but you can build your mobile AR project without HoloKit using these samples. 
 
 ## Project Environment
@@ -25,11 +29,23 @@ We have successfully tested them with the following software versions:
 
 In theory, other versions of Unity and Xcode that are close to these should also be compatible. However, if you encounter any issues during the build process, feel free to raise an issue in the repository.
 
-## Image Tracking Relocalization Sample
+## Image Tracking Relocalization Boilerplate
 
-## Immersal Sample
+This boilerplate utilizes MultipeerConnectivity for its network transport layer and employs image tracking relocalization for coordinate system synchronization. The synchronization process aligns the client devices' coordinate origins with that of the host. This ensures that virtual objects, assigned specific coordinates, appear at the same physical locations on both host the client devices.
 
+![ezgif-3-e8820418d2](https://github.com/holoi/holokit-immersal-multiplayer-boilerplate/assets/44870300/f6c6531e-8da8-4cb9-98ba-21db8bac9d9d)
 
+The accompanying GIF demonstrates the process: two iPhones connect over a local network. The client device then scans the marker image displayed on the host's screen. After detecting a series of stable image poses, the client calculates the relative translation and rotation needed to align its local coordinate origin with the host's. Users need to verify the accuracy of this synchronization by checking if the alignment marker rendered in AR closely matches the host device's real-time physical location. Once synchronized, the HoloKit markers, intended to appear atop each connected device, will follow their respective devices as seen through the iPhone screen.
+
+To get started, navigate to `Assets/Scenes/Multiplayer AR Boilerplate_Image Tracking Relocalization.unity` to open the scene, and then build it for your iOS devices. Familiarize yourself with the workflow and try to understand the code structure. You can then modify the code to tailor it to your project's needs.
+
+For a detailed understanding of how the image tracking relocalization method functions, please refer to the README file of the [image tracking relocalization package](https://github.com/holoi/com.holoi.xr.image-tracking-relocalization)
+
+## Immersal Boilerplate
+
+## How To Choose Network Transport
+
+## How To Choose Coordinate System Synchronization Method
 
 
 
