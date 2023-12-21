@@ -7,6 +7,12 @@ using Unity.Netcode;
 using Immersal.AR;
 using HoloInteractive.XR.HoloKit;
 
+/// <summary>
+/// We use this script to synchronize device pose with Immersal SDK.
+/// Immersal SDK moves the ARSpace instead of the camera to achieve AR map relocalization.
+/// Thus, we need to calculate the player pose according to the ARSpace pose in the reverse order.
+/// </summary>
+[RequireComponent(typeof(HoloKitMarkManager))]
 public class PlayerPoseSynchronizer : NetworkBehaviour
 {
     [SerializeField] private Vector3 m_Offset = new(0f, 0f, 0.5f);
@@ -15,8 +21,6 @@ public class PlayerPoseSynchronizer : NetworkBehaviour
 
     [SerializeField] private float m_RotationLerpSpeed = 5f;
 
-    [SerializeField] private HoloKitMarkController m_HoloKitMarkPrefab;
-
     private ARSpace m_ARSpace;
 
     private Transform m_CenterEyePose;
@@ -24,22 +28,6 @@ public class PlayerPoseSynchronizer : NetworkBehaviour
     private NetworkVariable<Vector3> m_RelativePosition = new(default, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
     private NetworkVariable<Quaternion> m_RelativeRotation = new(default, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-
-    private HoloKitMarkController m_HoloKitMark;
-
-    private void Start()
-    {
-        m_HoloKitMark = Instantiate(m_HoloKitMarkPrefab);
-        m_HoloKitMark.PlayerPoseSynchronizer = transform;
-    }
-
-    public override void OnDestroy()
-    {
-        base.OnDestroy();
-
-        if (m_HoloKitMark)
-            Destroy(m_HoloKitMark.gameObject);
-    }
 
     public override void OnNetworkSpawn()
     {

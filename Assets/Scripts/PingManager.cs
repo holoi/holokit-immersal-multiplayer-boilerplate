@@ -4,6 +4,7 @@
 
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using Unity.Netcode;
 using TMPro;
 
@@ -11,7 +12,7 @@ public class PingManager : NetworkBehaviour
 {
     [SerializeField] private float m_Interval = 1f;
 
-    [SerializeField] private TMP_Text m_PingText;
+    public UnityEvent<int> OnReceivedRtt;
 
     public override void OnNetworkSpawn()
     {
@@ -46,9 +47,9 @@ public class PingManager : NetworkBehaviour
     }
 
     [ClientRpc]
-    private void PongClientRpc(float timestamp, ClientRpcParams clientRpcParams = default)
+    private void PongClientRpc(float timestamp, ClientRpcParams _ = default)
     {
-        float rtt = Mathf.FloorToInt((Time.time - timestamp) * 1000f);
-        m_PingText.text = $"Ping: {rtt}ms";
+        int rtt = Mathf.FloorToInt((Time.time - timestamp) * 1000f);
+        OnReceivedRtt?.Invoke(rtt);
     }
 }
