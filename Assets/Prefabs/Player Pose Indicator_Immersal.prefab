@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4133304374819635627}
   - component: {fileID: 5196360537832959252}
   m_Layer: 0
-  m_Name: Player Pose Indicator
+  m_Name: Player Pose Indicator_Immersal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

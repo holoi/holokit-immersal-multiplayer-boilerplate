@@ -4,21 +4,24 @@
 
 using UnityEngine;
 
-public class HoloKitMarkManager : MonoBehaviour
+namespace HoloInteractive.XR.MultiplayerARBoilerplates
 {
-    [SerializeField] private HoloKitMarkController m_HoloKitMarkPrefab;
-
-    private HoloKitMarkController m_HoloKitMark;
-
-    private void Start()
+    public class HoloKitMarkManager : MonoBehaviour
     {
-        m_HoloKitMark = Instantiate(m_HoloKitMarkPrefab);
-        m_HoloKitMark.PlayerPoseSynchronizer = transform;
-    }
+        [SerializeField] private HoloKitMarkController m_HoloKitMarkPrefab;
 
-    public void OnDestroy()
-    {
-        if (m_HoloKitMark)
-            Destroy(m_HoloKitMark.gameObject);
+        private HoloKitMarkController m_HoloKitMark;
+
+        private void Start()
+        {
+            m_HoloKitMark = Instantiate(m_HoloKitMarkPrefab);
+            m_HoloKitMark.PlayerPoseSynchronizer = transform;
+        }
+
+        public void OnDestroy()
+        {
+            if (m_HoloKitMark)
+                Destroy(m_HoloKitMark.gameObject);
+        }
     }
 }

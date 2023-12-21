@@ -6,31 +6,34 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class NetworkPermissionTrigger : MonoBehaviour
+namespace HoloInteractive.XR.MultiplayerARBoilerplates
 {
-    // URL to trigger network permission - it should be a valid URL
-    private string testUrl = "https://apple.com";
-
-    // Start is called before the first frame update
-    void Start()
+    public class NetworkPermissionTrigger : MonoBehaviour
     {
-        StartCoroutine(RequestNetworkPermission());
-    }
+        // URL to trigger network permission - it should be a valid URL
+        private string testUrl = "https://apple.com";
 
-    IEnumerator RequestNetworkPermission()
-    {
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(testUrl))
+        // Start is called before the first frame update
+        void Start()
         {
-            // Send the request and wait for a response
-            yield return webRequest.SendWebRequest();
+            StartCoroutine(RequestNetworkPermission());
+        }
 
-            if (webRequest.isNetworkError || webRequest.isHttpError)
+        IEnumerator RequestNetworkPermission()
+        {
+            using (UnityWebRequest webRequest = UnityWebRequest.Get(testUrl))
             {
-                Debug.Log($"Error requesting network permission: {webRequest.error}");
-            }
-            else
-            {
-                Debug.Log("Network permission has been triggered successfully.");
+                // Send the request and wait for a response
+                yield return webRequest.SendWebRequest();
+
+                if (webRequest.isNetworkError || webRequest.isHttpError)
+                {
+                    Debug.Log($"Error requesting network permission: {webRequest.error}");
+                }
+                else
+                {
+                    Debug.Log("Network permission has been triggered successfully.");
+                }
             }
         }
     }

@@ -6,50 +6,52 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using Unity.Netcode;
-using TMPro;
 
-public class PingManager : NetworkBehaviour
+namespace HoloInteractive.XR.MultiplayerARBoilerplates
 {
-    [SerializeField] private float m_Interval = 1f;
-
-    public UnityEvent<int> OnReceivedRtt;
-
-    public override void OnNetworkSpawn()
+    public class PingManager : NetworkBehaviour
     {
-        if (!IsHost)
-        {
-            StartCoroutine(StartPing());
-        }
-    }
+        [SerializeField] private float m_Interval = 1f;
 
-    private IEnumerator StartPing()
-    {
-        while (true)
-        {
-            PingServerRpc(Time.time);
-            yield return new WaitForSeconds(m_Interval);
-        }
-    }
+        public UnityEvent<int> OnReceivedRtt;
 
-    [ServerRpc(RequireOwnership = false)]
-    private void PingServerRpc(float timestamp, ServerRpcParams serverRpcParams = default)
-    {
-        var clientId = serverRpcParams.Receive.SenderClientId;
-
-        ClientRpcParams clientRpcParams = new ClientRpcParams
+        public override void OnNetworkSpawn()
         {
-            Send = new ClientRpcSendParams
+            if (!IsHost)
             {
-                TargetClientIds = new ulong[] { clientId }
+                StartCoroutine(StartPing());
             }
-        };
-        PongClientRpc(timestamp, clientRpcParams);
-    }
+        }
 
-    [ClientRpc]
-    private void PongClientRpc(float timestamp, ClientRpcParams _ = default)
-    {
-        int rtt = Mathf.FloorToInt((Time.time - timestamp) * 1000f);
-        OnReceivedRtt?.Invoke(rtt);
+        private IEnumerator StartPing()
+        {
+            while (true)
+            {
+                PingServerRpc(Time.time);
+                yield return new WaitForSeconds(m_Interval);
+            }
+        }
+
+        [ServerRpc(RequireOwnership = false)]
+        private void PingServerRpc(float timestamp, ServerRpcParams serverRpcParams = default)
+        {
+            var clientId = serverRpcParams.Receive.SenderClientId;
+
+            ClientRpcParams clientRpcParams = new ClientRpcParams
+            {
+                Send = new ClientRpcSendParams
+                {
+                    TargetClientIds = new ulong[] { clientId }
+                }
+            };
+            PongClientRpc(timestamp, clientRpcParams);
+        }
+
+        [ClientRpc]
+        private void PongClientRpc(float timestamp, ClientRpcParams _ = default)
+        {
+            int rtt = Mathf.FloorToInt((Time.time - timestamp) * 1000f);
+            OnReceivedRtt?.Invoke(rtt);
+        }
     }
 }

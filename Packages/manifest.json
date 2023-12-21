@@ -2,6 +2,7 @@
   "dependencies": {
     "com.community.netcode.transport.multipeer-connectivity": "https://github.com/Unity-Technologies/multiplayer-community-contributions.git?path=/Transports/com.community.netcode.transport.multipeer-connectivity",
     "com.holoi.xr.holokit": "https://github.com/holoi/holokit-unity-sdk.git",
+    "com.holoi.xr.image-tracking-relocalization": "https://github.com/holoi/com.holoi.xr.image-tracking-relocalization.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.ai.navigation": "2.0.0",
     "com.unity.feature.development": "1.0.2",

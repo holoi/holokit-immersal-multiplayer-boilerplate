@@ -17,6 +17,18 @@
       },
       "hash": "e5f12d68e2d89cec4ac815441f442d64c0f4980f"
     },
+    "com.holoi.xr.image-tracking-relocalization": {
+      "version": "https://github.com/holoi/com.holoi.xr.image-tracking-relocalization.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.xr.arfoundation": "5.1.0",
+        "com.unity.xr.arkit": "5.1.0",
+        "com.unity.netcode.gameobjects": "1.7.1",
+        "com.unity.shadergraph": "16.0.4"
+      },
+      "hash": "2919f7a9ddf4ce5976a104a5b3d123945268d736"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
@@ -114,8 +126,8 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.netcode.gameobjects": {
-      "version": "1.7.0",
-      "depth": 0,
+      "version": "1.7.1",
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.nuget.mono-cecil": "1.10.1",

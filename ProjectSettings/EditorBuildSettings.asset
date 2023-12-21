@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Immersal Multiplayer AR Boilerplate.unity
+    path: Assets/Scenes/Multiplayer AR Boilerplate_Image Tracking Relocalization.unity
+    guid: 0c0a355b7059046598904caac5075b79
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer AR Boilerplate_Immersal.unity
     guid: ba9e47e3a93434b30b96cd6a9c5d8546
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 0eb36a35e1ef1cb4fae59380454bdd83, type: 2}

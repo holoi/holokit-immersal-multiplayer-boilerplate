@@ -6,71 +6,74 @@ using UnityEngine;
 using TMPro;
 using Unity.Netcode;
 
-public class NetworkStatsController : MonoBehaviour
+namespace HoloInteractive.XR.MultiplayerARBoilerplates
 {
-    [SerializeField] private TMP_Text m_StatusText;
-
-    [SerializeField] private TMP_Text m_PingText;
-
-    [SerializeField] private TMP_Text m_ConnectedDeviceCountText;
-
-    public void Start()
+    public class NetworkStatsController : MonoBehaviour
     {
-        NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
-        NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnect;
+        [SerializeField] private TMP_Text m_StatusText;
 
-        m_ConnectedDeviceCountText.gameObject.SetActive(false);
-    }
+        [SerializeField] private TMP_Text m_PingText;
 
-    private void OnDestroy()
-    {
-        if (NetworkManager.Singleton != null)
+        [SerializeField] private TMP_Text m_ConnectedDeviceCountText;
+
+        public void Start()
         {
             NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
             NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnect;
+
+            m_ConnectedDeviceCountText.gameObject.SetActive(false);
         }
-    }
 
-    public void OnHostStarted()
-    {
-        m_StatusText.text = "Status: Hosting";
-        m_ConnectedDeviceCountText.text = "Connected Device Count: 1";
-        m_ConnectedDeviceCountText.gameObject.SetActive(true);
-    }
+        private void OnDestroy()
+        {
+            if (NetworkManager.Singleton != null)
+            {
+                NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
+                NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnect;
+            }
+        }
 
-    public void OnClientStarted()
-    {
-        m_StatusText.text = "Status: Connecting";
-    }
+        public void OnHostStarted()
+        {
+            m_StatusText.text = "Status: Hosting";
+            m_ConnectedDeviceCountText.text = "Connected Device Count: 1";
+            m_ConnectedDeviceCountText.gameObject.SetActive(true);
+        }
 
-    public void OnShutdown()
-    {
-        m_StatusText.text = "Status: None";
-        m_PingText.text = "0ms";
-        m_ConnectedDeviceCountText.gameObject.SetActive(false);
-    }
+        public void OnClientStarted()
+        {
+            m_StatusText.text = "Status: Connecting";
+        }
 
-    public void OnVisibilityChanged(bool visible)
-    {
-        gameObject.SetActive(visible);
-    }
+        public void OnShutdown()
+        {
+            m_StatusText.text = "Status: None";
+            m_PingText.text = "0ms";
+            m_ConnectedDeviceCountText.gameObject.SetActive(false);
+        }
 
-    public void OnReceivedRtt(int rtt)
-    {
-        m_PingText.text = $"{rtt}ms";
-    }
+        public void OnVisibilityChanged(bool visible)
+        {
+            gameObject.SetActive(visible);
+        }
 
-    private void OnClientConnected(ulong clientId)
-    {
-        if (NetworkManager.Singleton.IsHost)
-            m_ConnectedDeviceCountText.text = $"Connected Device Count: {NetworkManager.Singleton.ConnectedClients.Count}";
-        else
-            m_StatusText.text = "Status: Connected";
-    }
+        public void OnReceivedRtt(int rtt)
+        {
+            m_PingText.text = $"{rtt}ms";
+        }
 
-    private void OnClientDisconnect(ulong clientId)
-    {
-        if (NetworkManager.Singleton.IsHost)
-            m_ConnectedDeviceCountText.text = $"Connected Device Count: {NetworkManager.Singleton.ConnectedClients.Count}";
+        private void OnClientConnected(ulong clientId)
+        {
+            if (NetworkManager.Singleton.IsHost)
+                m_ConnectedDeviceCountText.text = $"Connected Device Count: {NetworkManager.Singleton.ConnectedClients.Count}";
+            else
+                m_StatusText.text = "Status: Connected";
+        }
+
+        private void OnClientDisconnect(ulong clientId)
+        {
+            if (NetworkManager.Singleton.IsHost)
+                m_ConnectedDeviceCountText.text = $"Connected Device Count: {NetworkManager.Singleton.ConnectedClients.Count}";
+        }
     }
 }

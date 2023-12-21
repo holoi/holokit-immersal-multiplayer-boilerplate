@@ -7,77 +7,80 @@ using UnityEngine.Events;
 using Unity.Netcode;
 using HoloInteractive.XR.HoloKit;
 
-public class NetworkUIController : MonoBehaviour
+namespace HoloInteractive.XR.MultiplayerARBoilerplates
 {
-    [SerializeField] GameObject m_StartHostButton;
-
-    [SerializeField] GameObject m_StartClientButton;
-
-    [SerializeField] GameObject m_ShutdownButton;
-
-    [SerializeField] GameObject m_FireButton;
-
-    public UnityEvent OnBeforeHostStarted;
-
-    public UnityEvent OnHostStarted;
-
-    public UnityEvent OnClientStarted;
-
-    public UnityEvent OnShutdown;
-
-    public UnityEvent<bool> OnVisibilityChanged;
-
-    private void Start()
+    public class NetworkUIController : MonoBehaviour
     {
-        FindObjectOfType<HoloKitCameraManager>().OnScreenRenderModeChanged += OnScreenRenderModeChanged;
-    }
+        [SerializeField] GameObject m_StartHostButton;
 
-    private void OnScreenRenderModeChanged(ScreenRenderMode renderMode)
-    {
-        gameObject.SetActive(renderMode == ScreenRenderMode.Mono);
-        OnVisibilityChanged?.Invoke(renderMode == ScreenRenderMode.Mono);
-    }
+        [SerializeField] GameObject m_StartClientButton;
 
-    private void Update()
-    {
-        if (NetworkManager.Singleton.IsConnectedClient)
+        [SerializeField] GameObject m_ShutdownButton;
+
+        [SerializeField] GameObject m_FireButton;
+
+        public UnityEvent OnBeforeHostStarted;
+
+        public UnityEvent OnHostStarted;
+
+        public UnityEvent OnClientStarted;
+
+        public UnityEvent OnShutdown;
+
+        public UnityEvent<bool> OnVisibilityChanged;
+
+        private void Start()
         {
-            m_FireButton.SetActive(true);
+            FindObjectOfType<HoloKitCameraManager>().OnScreenRenderModeChanged += OnScreenRenderModeChanged;
         }
-        else
+
+        private void OnScreenRenderModeChanged(ScreenRenderMode renderMode)
         {
-            m_FireButton.SetActive(false);
+            gameObject.SetActive(renderMode == ScreenRenderMode.Mono);
+            OnVisibilityChanged?.Invoke(renderMode == ScreenRenderMode.Mono);
         }
-    }
 
-    public void StartHost()
-    {
-        OnBeforeHostStarted?.Invoke();
-        NetworkManager.Singleton.StartHost();
-        OnHostStarted?.Invoke();
+        private void Update()
+        {
+            if (NetworkManager.Singleton.IsConnectedClient)
+            {
+                m_FireButton.SetActive(true);
+            }
+            else
+            {
+                m_FireButton.SetActive(false);
+            }
+        }
 
-        m_StartHostButton.SetActive(false);
-        m_StartClientButton.SetActive(false);
-        m_ShutdownButton.SetActive(true);
-    }
+        public void StartHost()
+        {
+            OnBeforeHostStarted?.Invoke();
+            NetworkManager.Singleton.StartHost();
+            OnHostStarted?.Invoke();
 
-    public void StartClient()
-    {
-        NetworkManager.Singleton.StartClient();
-        OnClientStarted?.Invoke();
+            m_StartHostButton.SetActive(false);
+            m_StartClientButton.SetActive(false);
+            m_ShutdownButton.SetActive(true);
+        }
 
-        m_StartHostButton.SetActive(false);
-        m_StartClientButton.SetActive(false);
-        m_ShutdownButton.SetActive(true);
-    }
+        public void StartClient()
+        {
+            NetworkManager.Singleton.StartClient();
+            OnClientStarted?.Invoke();
 
-    public void Shutdown()
-    {
-        NetworkManager.Singleton.Shutdown();
-        OnShutdown?.Invoke();
+            m_StartHostButton.SetActive(false);
+            m_StartClientButton.SetActive(false);
+            m_ShutdownButton.SetActive(true);
+        }
 
-        m_StartHostButton.SetActive(true);
-        m_StartClientButton.SetActive(true);
-        m_ShutdownButton.SetActive(false);
+        public void Shutdown()
+        {
+            NetworkManager.Singleton.Shutdown();
+            OnShutdown?.Invoke();
+
+            m_StartHostButton.SetActive(true);
+            m_StartClientButton.SetActive(true);
+            m_ShutdownButton.SetActive(false);
+        }
     }
 }

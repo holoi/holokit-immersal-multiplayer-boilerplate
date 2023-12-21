@@ -5,12 +5,15 @@
 using UnityEngine;
 using Unity.Netcode.Transports.UTP;
 
-public class IPAddressController : MonoBehaviour
+namespace HoloInteractive.XR.MultiplayerARBoilerplates
 {
-    [SerializeField] private UnityTransport m_UnityTransport;
-
-    public void OnIPAddressChanged(string ipAddress)
+    public class IPAddressController : MonoBehaviour
     {
-        m_UnityTransport.SetConnectionData(ipAddress, (ushort)7777);
+        [SerializeField] private UnityTransport m_UnityTransport;
+
+        public void OnIPAddressChanged(string ipAddress)
+        {
+            m_UnityTransport.SetConnectionData(ipAddress, (ushort)7777);
+        }
     }
 }
