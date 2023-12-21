@@ -9,7 +9,7 @@ namespace HoloInteractive.XR.MultiplayerARBoilerplates
 {
     public class HoloKitMarkController : MonoBehaviour
     {
-        public Transform PlayerPoseSynchronizer;
+        public Transform PlayerPoseSynchronizer { get; set; }
 
         [SerializeField] private Vector3 m_Offset = new(0f, 0.15f, 0f);
 

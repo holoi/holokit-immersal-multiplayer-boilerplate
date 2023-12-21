@@ -10,7 +10,7 @@ namespace HoloInteractive.XR.MultiplayerARBoilerplates
 {
     public class NetworkStatsController : MonoBehaviour
     {
-        [SerializeField] private TMP_Text m_StatusText;
+        [SerializeField] private TMP_Text m_NetworkStatusText;
 
         [SerializeField] private TMP_Text m_PingText;
 
@@ -33,21 +33,27 @@ namespace HoloInteractive.XR.MultiplayerARBoilerplates
             }
         }
 
+        private void Update()
+        {
+            if (NetworkManager.Singleton != null && NetworkManager.Singleton.IsServer)
+                m_ConnectedDeviceCountText.text = $"Connected Device Count: {NetworkManager.Singleton.ConnectedClients.Count}";
+        }
+
         public void OnHostStarted()
         {
-            m_StatusText.text = "Status: Hosting";
-            m_ConnectedDeviceCountText.text = "Connected Device Count: 1";
+            m_NetworkStatusText.text = "Network Status: Hosting";
+            m_ConnectedDeviceCountText.text = $"Connected Device Count: {NetworkManager.Singleton.ConnectedClients.Count}";
             m_ConnectedDeviceCountText.gameObject.SetActive(true);
         }
 
         public void OnClientStarted()
         {
-            m_StatusText.text = "Status: Connecting";
+            m_NetworkStatusText.text = "Network Status: Connecting";
         }
 
         public void OnShutdown()
         {
-            m_StatusText.text = "Status: None";
+            m_NetworkStatusText.text = "Network Status: None";
             m_PingText.text = "0ms";
             m_ConnectedDeviceCountText.gameObject.SetActive(false);
         }
@@ -59,21 +65,18 @@ namespace HoloInteractive.XR.MultiplayerARBoilerplates
 
         public void OnReceivedRtt(int rtt)
         {
-            m_PingText.text = $"{rtt}ms";
+            m_PingText.text = $"Ping: {rtt}ms";
         }
 
         private void OnClientConnected(ulong clientId)
         {
-            if (NetworkManager.Singleton.IsHost)
-                m_ConnectedDeviceCountText.text = $"Connected Device Count: {NetworkManager.Singleton.ConnectedClients.Count}";
-            else
-                m_StatusText.text = "Status: Connected";
+            if (!NetworkManager.Singleton.IsServer)
+                m_NetworkStatusText.text = "Network Status: Connected";
         }
 
         private void OnClientDisconnect(ulong clientId)
         {
-            if (NetworkManager.Singleton.IsHost)
-                m_ConnectedDeviceCountText.text = $"Connected Device Count: {NetworkManager.Singleton.ConnectedClients.Count}";
+
         }
     }
 }

@@ -15,10 +15,8 @@ namespace HoloInteractive.XR.MultiplayerARBoilerplates
     /// Thus, we need to calculate the player pose according to the ARSpace pose in the reverse order.
     /// </summary>
     [RequireComponent(typeof(HoloKitMarkManager))]
-    public class PlayerPoseSynchronizer : NetworkBehaviour
+    public class PlayerPoseSynchronizer_Immersal : NetworkBehaviour
     {
-        [SerializeField] private Vector3 m_Offset = new(0f, 0f, 0.5f);
-
         [SerializeField] private float m_PositionLerpSpeed = 5f;
 
         [SerializeField] private float m_RotationLerpSpeed = 5f;
@@ -45,7 +43,7 @@ namespace HoloInteractive.XR.MultiplayerARBoilerplates
         {
             if (IsOwner)
             {
-                m_RelativePosition.Value = m_ARSpace.transform.InverseTransformPoint(m_CenterEyePose.position + m_CenterEyePose.TransformVector(m_Offset));
+                m_RelativePosition.Value = m_ARSpace.transform.InverseTransformPoint(m_CenterEyePose.position);
                 m_RelativeRotation.Value = Quaternion.Inverse(m_ARSpace.transform.rotation) * m_CenterEyePose.rotation;
             }
         }

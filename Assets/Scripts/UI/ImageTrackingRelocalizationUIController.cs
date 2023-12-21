@@ -15,7 +15,9 @@ namespace HoloInteractive.XR.MultiplayerARBoilerplates
 
         [SerializeField] private GameObject m_AlignmentMarkerPanel;
 
-        [SerializeField] private TMP_Text m_StatusText;
+        [SerializeField] private TMP_Text m_SyncingStatusText;
+
+        [SerializeField] private GameObject m_ResyncPoseButton;
 
         private NetworkImageTrackingStablizer m_NetworkImageTrackingStablizer; 
 
@@ -23,7 +25,14 @@ namespace HoloInteractive.XR.MultiplayerARBoilerplates
         {
             m_ToggleMarkerButton.SetActive(false);
             m_AlignmentMarkerPanel.SetActive(false);
-            m_StatusText.gameObject.SetActive(false);
+            m_SyncingStatusText.gameObject.SetActive(false);
+            m_ResyncPoseButton.SetActive(false);
+
+            m_NetworkImageTrackingStablizer = FindFirstObjectByType<NetworkImageTrackingStablizer>();
+            if (m_NetworkImageTrackingStablizer == null)
+            {
+                Debug.LogWarning("[ImageTrackingRelocalizationUIController] Failed to find NetworkImageTrackingStablizer in the scene");
+            }
 
             NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
         }
@@ -40,31 +49,37 @@ namespace HoloInteractive.XR.MultiplayerARBoilerplates
         {
             if (!NetworkManager.Singleton.IsHost)
             {
-                m_StatusText.gameObject.SetActive(true);
-                m_StatusText.text = "Syncing Status: Syncing timestamp";
+                m_SyncingStatusText.gameObject.SetActive(true);
+                m_SyncingStatusText.text = "Syncing Status: Syncing timestamp";
             }
         }
 
         public void OnTimestampSynced()
         {
-            m_StatusText.text = "Syncing Status: Tracking marker";
+            m_SyncingStatusText.text = "Syncing Status: Tracking marker";
         }
 
         public void OnPoseSynced()
         {
             m_AlignmentMarkerPanel.SetActive(true);
-            m_StatusText.text = "Syncing Status: Validating pose";
+            m_SyncingStatusText.text = "Syncing Status: Validating pose";
         }
 
         public void OnAlignmentMarkerAccepted()
         {
             m_AlignmentMarkerPanel.SetActive(false);
+            m_ResyncPoseButton.SetActive(true);
         }
 
         public void OnAlignmentMarkerDenied()
         {
             m_AlignmentMarkerPanel.SetActive(false);
-            m_StatusText.text = "Syncing Status: Tracking marker";
+            m_SyncingStatusText.text = "Syncing Status: Tracking marker";
+        }
+
+        public void OnResyncPose()
+        {
+            m_ResyncPoseButton.SetActive(false);
         }
 
         public void OnHostStarted()
@@ -76,7 +91,8 @@ namespace HoloInteractive.XR.MultiplayerARBoilerplates
         {
             m_ToggleMarkerButton.SetActive(false);
             m_AlignmentMarkerPanel.SetActive(false);
-            m_StatusText.gameObject.SetActive(false);
+            m_SyncingStatusText.gameObject.SetActive(false);
+            m_ResyncPoseButton.SetActive(false);
         }
 
         public void OnVisibilityChanged(bool visible)
@@ -95,11 +111,17 @@ namespace HoloInteractive.XR.MultiplayerARBoilerplates
         public void AcceptMarker()
         {
             m_NetworkImageTrackingStablizer.AcceptAlignmentMarker();
+            m_SyncingStatusText.text = "Syncing Status: Checked";
         }
 
         public void DenyMarker()
         {
             m_NetworkImageTrackingStablizer.DenyAlignmentMarker();
+        }
+
+        public void ResyncPose()
+        {
+            m_NetworkImageTrackingStablizer.ResyncPose();
         }
     }
 }

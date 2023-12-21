@@ -5,15 +5,18 @@
 using UnityEngine;
 using Unity.Netcode;
 
-[RequireComponent(typeof(Rigidbody))]
-public class NetworkBulletController : NetworkBehaviour
+namespace HoloInteractive.XR.MultiplayerARBoilerplates
 {
-    [Tooltip("The initial force applied to the bullet.")]
-    [SerializeField] private float m_Speed = 300f;
-
-    private void Start()
+    [RequireComponent(typeof(Rigidbody))]
+    public class NetworkBulletController : NetworkBehaviour
     {
-        // Apply the initial force to the bullet
-        GetComponent<Rigidbody>().AddForce(transform.forward * m_Speed);
+        [Tooltip("The initial force applied to the bullet.")]
+        [SerializeField] private float m_Speed = 300f;
+
+        private void Start()
+        {
+            // Apply the initial force to the bullet
+            GetComponent<Rigidbody>().AddForce(transform.forward * m_Speed);
+        }
     }
 }
