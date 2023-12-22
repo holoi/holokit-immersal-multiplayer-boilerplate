@@ -95,3 +95,9 @@ To elaborate, "cold start" is preferable for AR projects targeting a general aud
 On the other hand, if your AR project is tailored for specific events, such as exhibitions or museum displays, the "absolute coordinate" approach is recommended. Utilizing a pre-scanned AR map provides more accurate and robust tracking compared to "cold start" setups. This method enables AR experiences in larger spaces, surpassing the room-scale limitations typical of "cold start" projects.
 
 For a comprehensive understanding of multiplayer AR, including its concept and implementation, we recommend reading this [specialized article](https://docs.holokit.io/creators/tutorials/tutorial-x-the-concept-and-implementation-of-multiplayer-ar) on the subject.
+
+## Questions and Feedback
+
+Designing and implementaing a multiplayer AR experience can be a complex endeavor. If you have any questions or suggestions regarding this repository, please don't hesitate to raise an issue. We're here to help and value your input!
+
+Fore more direct communication, join our community on [Discord](https://discord.gg/9Stseyje), or feel free to email me at yuchenz27@outlook.com. We look forward to your contributions and are excited to see what you create. Thank you!
