@@ -57,6 +57,33 @@ To begin, navigate to `Assets/Scenes/Multiplayer AR Boilerplate_Immersal.unity`.
 
 After building the project onto your iOS devices, successful relocalization by the Immersal SDK will enable the HoloKit markers to be rendered accurately atop each connected devices.
 
-## How To Choose Network Transport
+## Which Network Transport Should You Use
 
-## How To Choose Coordinate System Synchronization Method
+### MultipeerConnectivity
+
+MultipeerConnectivity is typically the best choice for most applications. It allows nearby iOS devices to connect automatically, leveraging Bluetooth and WiFi capabilities for a peer-to-peer local network. This feature is advantageous as it does not require WiFi or cellular data, enabling device connection in extreme locations like deserts or snow-covered mountains. Additionally, it offers relatively low latency, approximately near 30ms, as it bypasses the need to route messages through a remote server. This mechanism is ideal for the inherently on-site nature of AR experiences.
+
+However, MultipeerConnectivity may not be suitable in two specific scenarios:
+
+1. Distance Limitations: If devices are likely to be more than 10 meters apart, connection stability can become an issue.
+
+2. Interference in High-Tech Environments: In areas crowded with digital devices, such as exhibition booths surrounded by multiple routers, wireless signals may be disrupted.
+
+Apart from these two situations, MultipeerConnectivity is highly recommended as the transport layer of choice.
+
+### Local Router Connection
+
+This method contrasts with MultipeerConnectivity in that it requires the presence of a router and manual input of the IP address. However, like MultipeerConnectivity, it also achives low latency by facilitating local message transfer.
+
+A prime scenario for employing a local router connection is in exhibition AR projects, where stable connections with multiple devices are crucial. A typical setup might involve a Mac or PC serving as the host, with client iPhones connected to it. Utilizing a Mac or PC as the host provides a rubost computational core to manage operatioins. Additionally, this arrangement allows developers to monitor all connected clients and invervene in real time, ensuring an optimized AR experience.
+
+### Unity Relay
+
+While most AR projects do not require remote message transfers, Unity Relay service can be a viable option for your project. Unlike the local router connection method, where a router acts as an intermediary server, Unity Relay provides a remote server to handle message transfers between devices.
+
+Transitioning from a local router connection to using Unity Relay with Unity Transport is straightforward. To get started, we recommend the following YouTube tutorials:
+
+- [Dapper Dino's video](https://www.youtube.com/watch?v=viY_a6TwrhE)
+- [Dilmer Valecillos's video](https://www.youtube.com/watch?v=82Lbho7S0OA)
+
+## Which Coordinate System Synchronization Method Should You Use
