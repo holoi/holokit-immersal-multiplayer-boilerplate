@@ -87,3 +87,11 @@ Transitioning from a local router connection to using Unity Relay with Unity Tra
 - [Dilmer Valecillos's video](https://www.youtube.com/watch?v=82Lbho7S0OA)
 
 ## Which Coordinate System Synchronization Method Should You Use
+
+The selction of a coordinate system synchronization method should align with your project's unique requirements. If your project involves a "cold start" scenario, then image tracking relocalization is the appropriate choice. Conversely, for projects requiring "absolute coordinate", the Immersal SDK is the better option.
+
+To elaborate, "cold start" is preferable for AR projects targeting a general audience. This approach is ideal because it doesn't assume that the majority of users will visit a specific location to engage with your AR game. The primary benefit of "cold start" AR is its ability to be experienced anywhere, making it widely accessible.
+
+On the other hand, if your AR project is tailored for specific events, such as exhibitions or museum displays, the "absolute coordinate" approach is recommended. Utilizing a pre-scanned AR map provides more accurate and robust tracking compared to "cold start" setups. This method enables AR experiences in larger spaces, surpassing the room-scale limitations typical of "cold start" projects.
+
+For a comprehensive understanding of multiplayer AR, including its concept and implementation, we recommend reading this [specialized article](https://docs.holokit.io/creators/tutorials/tutorial-x-the-concept-and-implementation-of-multiplayer-ar) on the subject.
