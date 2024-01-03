@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository provides two multiplayer AR boilerplates, serving as foundations for developing your multiplayer AR projects.
+This repository provides three multiplayer AR boilerplates, serving as foundations for developing your multiplayer AR projects.
 
 Implementing a multiplayer AR project involves addressing two critical aspects: network communication and coordinate system synchronization. Network communication is essential for exchanging data across connected devices, and coordinate system synchronization ensures that virtual content is rendered consistently in the real world locations across different devices, each with its own independent local coordinate system.
 
@@ -10,9 +10,9 @@ For networking, our boilerplates utilize [Unity's Netcode for GameObjects](https
 
 There are primarily two types of AR localization mechanisms: the "cold start" approach and the "absolute coordinate" approach. The "cold start" approach involves the device initiating the AR session without prior knowledge of its surroundings, requiring it to simultaneously construct a virtual map and localize itself within it. In contrast, the "absolute coordinate" approach means the device begins with complete information about its environment, focusing only on relocalizing itself within a pre-constructed map. We have a [specialized article](https://docs.holokit.io/creators/tutorials/tutorial-x-the-concept-and-implementation-of-multiplayer-ar) that explains the concept and implementation of multiplayer AR in detail.
 
-We offer two boilerplates: one for the "cold start" approach and another for the "absolute coordinate" approach. For "cold start" cases, we use the [Image Tracking Relocalization package](https://github.com/holoi/com.holoi.xr.image-tracking-relocalization) for coordinate system synchronization. For "absolute coordinate" cases, we employ the [Immersal SDK](https://immersal.gitbook.io/sdk/), which enables users to pre-scan the environment and create point cloud map data on the cloud. This facilitates large-scale pre-scanned AR tracking.
+We offer three boilerplates: two for the "cold start" approach and another for the "absolute coordinate" approach. For "cold start" cases, we use the two methods in [Image Tracking Relocalization package](https://github.com/holoi/com.holoi.xr.image-tracking-relocalization) for coordinate system synchronization. For "absolute coordinate" cases, we employ the [Immersal SDK](https://immersal.gitbook.io/sdk/), which enables users to pre-scan the environment and create point cloud map data on the cloud. This facilitates large-scale pre-scanned AR tracking.
 
-Apart from differing in their approach to coordinate system synchronization, the two boilerplates share a majority of their codebase in other aspects.
+Apart from differing in their approach to coordinate system synchronization, the three boilerplates share a majority of their codebase in other aspects.
 
 These boilerplates are specifically designed for multiplayer AR experiences and require knowledge in networking programming, with a particular emphasis on Unity's Netcode for GameObjects. Multiplayer development fundamentally differs from single-player game development, necessitating a network-centric approach in both design and implementation. For thoese new to Netcode for GameObjects, we recommend familiarizing yourself with its [documentation](https://docs-multiplayer.unity3d.com/netcode/current/about/).
 
@@ -29,9 +29,21 @@ We have successfully tested them with the following software versions:
 
 In theory, other versions of Unity and Xcode that are close to these should also be compatible. However, if you encounter any issues during the build process, feel free to raise an issue in the repository.
 
-## Image Tracking Relocalization Boilerplate
+## External Marker Relocalizaion Boilerplate
 
-This boilerplate utilizes MultipeerConnectivity for its network transport layer and employs image tracking relocalization for coordinate system synchronization. The synchronization process aligns the client devices' coordinate origins with that of the host. This ensures that virtual objects, assigned specific coordinates, appear at the same physical locations on both host the client devices.
+This boilerplate provides two network transport options: MultipeerConnectivity and a local router connection via the [Unity Transport package](https://docs.unity3d.com/Packages/com.unity.transport@1.4/manual/index.html). It employs an external marker relocalization technique from the [Image Tracking Relocalization package](https://github.com/holoi/com.holoi.xr.image-tracking-relocalization) from coordinate system synchronization. Each device independently relocalizes by scanning an external marker and resetting its coordinate origin to this marker.
+
+![ezgif-5-d02131cab1](https://github.com/holoi/holokit-multiplayer-ar-boilerplates/assets/44870300/0c986977-c469-4f3d-8158-65ff1ef53902)
+
+The process is illustrated in the accompanying GIF: an iPhone tracks an external marker image. We enhance accuracy in image tracking by tracking multiple consecutive poses of a marker, minimizing the deviation that can occur with a single detection. Upon detecting a stable sequence, it computes the correct pose for this sequence and resets its coordinate origin accordingly.
+
+To start, open the scene `Assets/Scenes/Multiplayer AR Boilerplate_External Marker Relocalization.unity` from project directory and build it for your iOS device. If you want to change the marker image, create your own `XRReferenceImageLibrary` asset for the `ARTrackedImageManager` component and add your marker image to the asset. The physical size of the marker must match the size set in the `XRReferenceImageLibrary` asset to ensure tracking accuracy. Familiarize yourself with the workflow and code structure before customizing it for your project.
+
+For comprehensive details on the external marker relocalization method, refer to the README of the [image tracking relocalization package](https://github.com/holoi/com.holoi.xr.image-tracking-relocalization).
+
+## Dynamically Rendered Marker Relocalization Boilerplate
+
+This boilerplate utilizes MultipeerConnectivity for its network transport layer and employs a dynamically rendered marker relocalization method for coordinate system synchronization. Unlike external marker relocalization, which relies on a physical marker, this approach enables multiplayer AR experience in any location. Client devices track a marker displayed on the host device's screen, rather than an external marker. The synchronization process aligns the client devices' coordinate origins with that of the host. This ensures that virtual objects, assigned specific coordinates, appear at the same physical locations on both host the client devices.
 
 ![ezgif-3-e8820418d2](https://github.com/holoi/holokit-immersal-multiplayer-boilerplate/assets/44870300/f6c6531e-8da8-4cb9-98ba-21db8bac9d9d)
 
@@ -39,7 +51,7 @@ The accompanying GIF demonstrates the process: two iPhones connect over a local 
 
 To get started, navigate to `Assets/Scenes/Multiplayer AR Boilerplate_Image Tracking Relocalization.unity` to open the scene, and then build it for your iOS devices. Familiarize yourself with the workflow and try to understand the code structure. You can then modify the code to tailor it to your project's needs.
 
-For a detailed understanding of how the image tracking relocalization method functions, please refer to the README file of the [image tracking relocalization package](https://github.com/holoi/com.holoi.xr.image-tracking-relocalization).
+For a detailed understanding of how the dynamically rendered marker relocalizatioin method functions, please refer to the README file of the [image tracking relocalization package](https://github.com/holoi/com.holoi.xr.image-tracking-relocalization).
 
 ## Immersal Boilerplate
 
@@ -88,11 +100,11 @@ Transitioning from a local router connection to using Unity Relay with Unity Tra
 
 ## Which Coordinate System Synchronization Method Should You Use
 
-The selction of a coordinate system synchronization method should align with your project's unique requirements. If your project involves a "cold start" scenario, then image tracking relocalization is the appropriate choice. Conversely, for projects requiring "absolute coordinate", the Immersal SDK is the better option.
+The selction of a coordinate system synchronization method should align with your project's unique requirements. If your project involves a "cold start" scenario, then two methods from the image tracking relocalization package are appropriate. Conversely, for projects requiring "absolute coordinate", the Immersal SDK is the better option.
 
-To elaborate, "cold start" is preferable for AR projects targeting a general audience. This approach is ideal because it doesn't assume that the majority of users will visit a specific location to engage with your AR game. The primary benefit of "cold start" AR is its ability to be experienced anywhere, making it widely accessible.
+To elaborate, "cold start" is preferable for AR projects targeting a general audience. This approach is ideal because it doesn't assume that the majority of users will visit a specific location to engage with your AR game. The primary benefit of "cold start" AR is its ability to be experienced anywhere, making it widely accessible. The selection between external marker and dynamically rendered marker relocalization methods should be based on your specific environment and project needs. The external marker method offers a more straightforward setup, as it operates independently, unlike the dynamically rendered approach that requires all client devices to scan the marker on the host's screen. Additionally, the external marker method is more error-tolerant. AR tracking often becomes inaccurate, and an external marker allows for easier and more frequent relocalization during a session without interrupting the host device, in contrast to using a host device-displayed marker. Therefore, for projects involving more than three devices with an accessible external marker, the external marker approach is typically more advantageous. Conversely, for projects with only two or three devices where an external marker is not feasible, the dynamically rendered marker method is preferable.
 
-On the other hand, if your AR project is tailored for specific events, such as exhibitions or museum displays, the "absolute coordinate" approach is recommended. Utilizing a pre-scanned AR map provides more accurate and robust tracking compared to "cold start" setups. This method enables AR experiences in larger spaces, surpassing the room-scale limitations typical of "cold start" projects.
+If your AR project is tailored for specific events, such as exhibitions or museum displays, the "absolute coordinate" approach is recommended. Utilizing a pre-scanned AR map provides more accurate and robust tracking compared to "cold start" setups. This method enables AR experiences in larger spaces, surpassing the room-scale limitations typical of "cold start" projects.
 
 For a comprehensive understanding of multiplayer AR, including its concept and implementation, we recommend reading this [specialized article](https://docs.holokit.io/creators/tutorials/tutorial-x-the-concept-and-implementation-of-multiplayer-ar) on the subject.
 
