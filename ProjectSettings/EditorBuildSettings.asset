@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Multiplayer AR Boilerplate_External Marker Relocalization.unity
     guid: 5b55e491684664595a8936ebfdd22a5f
   - enabled: 0
-    path: Assets/Scenes/Multiplayer AR Boilerplate_Dynamic Rendered Marker Relocalization.unity
+    path: Assets/Scenes/Multiplayer AR Boilerplate_Dynamically Rendered Marker Relocalization.unity
     guid: 0c0a355b7059046598904caac5075b79
   - enabled: 0
     path: Assets/Scenes/Multiplayer AR Boilerplate_Immersal.unity
