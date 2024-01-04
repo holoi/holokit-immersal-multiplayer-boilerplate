@@ -585,7 +585,7 @@ PlayerSettings:
   enableCrashReportAPI: 0
   cameraUsageDescription: Required for augmented reality support.
   locationUsageDescription: Required for satellite positioning support.
-  microphoneUsageDescription: 
+  microphoneUsageDescription: For audio recording.
   bluetoothUsageDescription: 
   macOSTargetOSVersion: 10.13.0
   switchNMETAOverride: 

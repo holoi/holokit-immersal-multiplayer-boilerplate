@@ -1270,6 +1270,7 @@ GameObject:
   - component: {fileID: 645122398}
   - component: {fileID: 645122400}
   - component: {fileID: 645122399}
+  - component: {fileID: 645122401}
   m_Layer: 0
   m_Name: HoloKit Camera
   m_TagString: MainCamera
@@ -1509,6 +1510,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f3457d6285d432db8dbc462e1e743a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &645122401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645122387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c947fec5fa8849cf851b256d1c1e69e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordMicrophone: 0
 --- !u!1 &669854725
 GameObject:
   m_ObjectHideFlags: 0
@@ -2446,7 +2460,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a89dc74f869c4de5b6f23ac1603fb0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ButtonText: {fileID: 1858947066}
+  RenderModeButtonText: {fileID: 0}
+  RecordButtonText: {fileID: 0}
 --- !u!114 &1337773247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2558,6 +2573,7 @@ GameObject:
   - component: {fileID: 1341187397}
   - component: {fileID: 1341187399}
   - component: {fileID: 1341187400}
+  - component: {fileID: 1341187401}
   m_Layer: 0
   m_Name: NetworkImageTrackingStablizer
   m_TagString: Untagged
@@ -2716,6 +2732,18 @@ MonoBehaviour:
   m_PhoneModelList: {fileID: 11400000, guid: 97e080f80a8ae49d78e255ae53b17e11, type: 2}
   m_MarkerImage: {fileID: 21300000, guid: db4fef2d98603468898cb5b30d5a4a7a, type: 3}
   m_MarkerCanvasPrefab: {fileID: 1676590135048883825, guid: 27ba7803c3f8441fc84b74748f42c9f1, type: 3}
+--- !u!114 &1341187401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341187396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4509cdc0e71f45998cecc9a8576b59a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1352091293
 GameObject:
   m_ObjectHideFlags: 0
