@@ -15,7 +15,7 @@
         "com.unity.xr.arfoundation": "5.1.0",
         "com.unity.xr.arkit": "5.1.0"
       },
-      "hash": "13f243ef510fe7dd491229ee4e6aee5e487abea4"
+      "hash": "101beb3769741287b64f5fe372f904552181fad1"
     },
     "com.holoi.xr.image-tracking-relocalization": {
       "version": "https://github.com/holoi/com.holoi.xr.image-tracking-relocalization.git",
