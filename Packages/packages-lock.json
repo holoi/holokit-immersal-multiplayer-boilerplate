@@ -5,7 +5,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "b2265b5a650ccc1c4ea4526351839b1c6e3263e0"
+      "hash": "87ab0c982c7f1fb87a0a8a131fc55a2577957edf"
     },
     "com.holoi.xr.holokit": {
       "version": "https://github.com/holoi/holokit-unity-sdk.git",
@@ -248,11 +248,11 @@
       }
     },
     "com.unity.xr.arcore": {
-      "version": "5.1.0",
+      "version": "5.1.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.xr.arfoundation": "5.1.0",
+        "com.unity.xr.arfoundation": "5.1.1",
         "com.unity.xr.core-utils": "2.1.0",
         "com.unity.xr.management": "4.0.1",
         "com.unity.modules.androidjni": "1.0.0",
@@ -261,7 +261,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.arfoundation": {
-      "version": "5.1.0",
+      "version": "5.1.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -279,12 +279,12 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.arkit": {
-      "version": "5.1.0",
+      "version": "5.1.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.editorcoroutines": "1.0.0",
-        "com.unity.xr.arfoundation": "5.1.0",
+        "com.unity.xr.arfoundation": "5.1.1",
         "com.unity.xr.core-utils": "2.1.0",
         "com.unity.xr.management": "4.0.1"
       },

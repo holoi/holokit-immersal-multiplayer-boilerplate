@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Immersal Ltd.
-  productName: Immersal HoloKit Samples
+  companyName: Holo Interactive
+  productName: HoloKit Multiplayer AR Boilerplates
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -82,9 +82,9 @@ PlayerSettings:
   runInBackground: 1
   captureSingleScreen: 0
   muteOtherAudioSources: 0
-  Prepare IOS For Recording: 0
+  Prepare IOS For Recording: 1
   Force IOS Speakers When Recording: 0
-  deferSystemGesturesMode: 0
+  deferSystemGesturesMode: 15
   hideHomeButton: 1
   submitAnalytics: 1
   usePlayerLog: 1
@@ -136,13 +136,18 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: 1.19.1
+  bundleVersion: 0.1.0
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 11400000, guid: 8b50767f4cc159e4f8f13f48aa7ab6f1, type: 2}
+  - {fileID: 8837815291478954806, guid: 0baf2c601641d904191e540fda355c5e, type: 2}
+  - {fileID: 1044232767714871929, guid: 5066d500c9e54c64aa10117cec1ae4bf, type: 2}
+  - {fileID: 4800000, guid: e7c77f6eaab324a819efdc13b8125a39, type: 3}
+  - {fileID: 4800000, guid: 6743a50a812740be8c0aa3fccc46fae9, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -165,7 +170,7 @@ PlayerSettings:
   androidMinAspectRatio: 1
   applicationIdentifier:
     Android: com.immersal.sdk.samples
-    iPhone: com.immersal.sdk.samples
+    iPhone: com.holoi.xr.multiplayers-ar-boilerplates
   buildNumber:
     Bratwurst: 0
     Standalone: 0
@@ -190,7 +195,7 @@ PlayerSettings:
   strictShaderVariantMatching: 0
   VertexChannelCompressionMask: 4054
   iPhoneSdkVersion: 988
-  iOSTargetOSVersionString: 13.0
+  iOSTargetOSVersionString: 17.0
   tvOSSdkVersion: 0
   tvOSRequireExtendedGameController: 0
   tvOSTargetOSVersionString: 13.0
@@ -250,7 +255,7 @@ PlayerSettings:
   appleEnableAutomaticSigning: 0
   iOSRequireARKit: 1
   iOSAutomaticallyDetectAndAddCapabilities: 1
-  appleEnableProMotion: 0
+  appleEnableProMotion: 1
   shaderPrecisionModel: 0
   clonedFromGUID: c0afd0d1d80e3634a9dac47e8a0426ea
   templatePackageId: com.unity.3d@1.0.2
@@ -289,7 +294,14 @@ PlayerSettings:
   AndroidValidateAppBundleSize: 1
   AndroidAppBundleSizeToValidate: 150
   AndroidReportGooglePlayAppDependencies: 1
-  m_BuildTargetIcons: []
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 602d92b1396b64970b149e56375530e3, type: 3}
+      m_Width: 128
+      m_Height: 128
+      m_Kind: 0
   m_BuildTargetPlatformIcons:
   - m_BuildTarget: Android
     m_Icons:
@@ -457,13 +469,7 @@ PlayerSettings:
       m_Kind: 2
       m_SubKind: iPad
     - m_Textures:
-      - {fileID: 2800000, guid: a2f8cdbfc5b9c4164a227835e57331cb, type: 3}
-      m_Width: 1024
-      m_Height: 1024
-      m_Kind: 4
-      m_SubKind: App Store
-    - m_Textures:
-      - {fileID: 2800000, guid: a2f8cdbfc5b9c4164a227835e57331cb, type: 3}
+      - {fileID: 0}
       m_Width: 180
       m_Height: 180
       m_Kind: 0
@@ -475,21 +481,29 @@ PlayerSettings:
       m_Kind: 0
       m_SubKind: iPhone
     - m_Textures:
-      - {fileID: 2800000, guid: a2f8cdbfc5b9c4164a227835e57331cb, type: 3}
+      - {fileID: 0}
       m_Width: 167
       m_Height: 167
       m_Kind: 0
       m_SubKind: iPad
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 0}
       m_Width: 152
       m_Height: 152
       m_Kind: 0
       m_SubKind: iPad
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 0}
       m_Width: 76
       m_Height: 76
       m_Kind: 0
       m_SubKind: iPad
+    - m_Textures:
+      - {fileID: 0}
+      m_Width: 1024
+      m_Height: 1024
+      m_Kind: 4
+      m_SubKind: App Store
   m_BuildTargetBatching:
   - m_BuildTarget: Standalone
     m_StaticBatching: 1
@@ -876,7 +890,7 @@ PlayerSettings:
   gcWBarrierValidation: 0
   apiCompatibilityLevelPerPlatform:
     Android: 6
-    iPhone: 6
+    iPhone: 3
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
