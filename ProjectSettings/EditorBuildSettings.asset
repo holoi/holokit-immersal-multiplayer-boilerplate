@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Multiplayer AR Boilerplate_Dynamically Rendered Marker Relocalization.unity
-    guid: 0c0a355b7059046598904caac5075b79
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Multiplayer AR Boilerplate_External Marker Relocalization.unity
     guid: 5b55e491684664595a8936ebfdd22a5f
   - enabled: 1
+    path: Assets/Scenes/Multiplayer AR Boilerplate_Dynamically Rendered Marker Relocalization.unity
+    guid: 0c0a355b7059046598904caac5075b79
+  - enabled: 0
     path: Assets/Scenes/Multiplayer AR Boilerplate_Immersal.unity
     guid: ba9e47e3a93434b30b96cd6a9c5d8546
   m_configObjects:

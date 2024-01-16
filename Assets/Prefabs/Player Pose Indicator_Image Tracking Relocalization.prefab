@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 5331183624995983526}
   - component: {fileID: 4277107362026446594}
   - component: {fileID: 6695187060350041357}
-  - component: {fileID: -4709861878766330284}
-  - component: {fileID: 5354673335314593387}
+  - component: {fileID: 4871318819062533996}
   - component: {fileID: 5196360537832959252}
   m_Layer: 0
   m_Name: Player Pose Indicator_Image Tracking Relocalization
@@ -86,7 +85,7 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
---- !u!114 &-4709861878766330284
+--- !u!114 &4871318819062533996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,19 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9dc884048e44b918baaaf991755e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IsSyncingPose: 0
---- !u!114 &5354673335314593387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 21633727457173676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a58f60f3da8c46459f72c639fb71eb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_IsSyncingPose: 1
 --- !u!114 &5196360537832959252
 MonoBehaviour:
   m_ObjectHideFlags: 0

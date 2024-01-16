@@ -30,8 +30,6 @@ namespace HoloInteractive.XR.MultiplayerARBoilerplates
         {
             if (IsSpawned && IsOwner && m_CenterEyePose != null)
                 transform.SetPositionAndRotation(m_CenterEyePose.position, m_CenterEyePose.rotation);
-
-
         }
     }
 }

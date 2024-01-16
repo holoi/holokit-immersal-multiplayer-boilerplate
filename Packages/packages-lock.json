@@ -15,7 +15,7 @@
         "com.unity.xr.arfoundation": "5.1.0",
         "com.unity.xr.arkit": "5.1.0"
       },
-      "hash": "101beb3769741287b64f5fe372f904552181fad1"
+      "hash": "8446da60d5d95f3f9b448a14d1cd510e43bf4746"
     },
     "com.holoi.xr.image-tracking-relocalization": {
       "version": "https://github.com/holoi/com.holoi.xr.image-tracking-relocalization.git",
@@ -27,7 +27,7 @@
         "com.unity.netcode.gameobjects": "1.7.1",
         "com.unity.shadergraph": "16.0.4"
       },
-      "hash": "8e5d72c4958dd1c3d59c07a7d2307fa28b9a3d68"
+      "hash": "f1f13d6fa1efb02bd6bbabedbb90f90442bb7977"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
