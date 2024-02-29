@@ -1,13 +1,14 @@
-// SPDX-FileCopyrightText: Copyright 2023 Holo Interactive <dev@holoi.com>
+// SPDX-FileCopyrightText: Copyright 2023 Reality Design Lab <dev@reality.design>
 // SPDX-FileContributor: Yuchen Zhang <yuchenz27@outlook.com>
+// SPDX-FileContributor: Botao Amber Hu <botao.a.hu@gmail.com>
 // SPDX-License-Identifier: MIT
 
 using UnityEngine;
 using Unity.Netcode;
-using HoloInteractive.XR.HoloKit;
-using Immersal.AR;
+using HoloKit;
+using Immersal.XR;
 
-namespace HoloInteractive.XR.MultiplayerARBoilerplates
+namespace HoloKit.ColocatedMultiplayerBoilerplate
 {
     public enum RelocalizationMode
     {
@@ -25,7 +26,7 @@ namespace HoloInteractive.XR.MultiplayerARBoilerplates
 
         private Transform m_CenterEyePose;
 
-        private ARSpace m_ARSpace;
+        private XRSpace m_XRSpace;
 
         private void Start()
         {
@@ -33,7 +34,7 @@ namespace HoloInteractive.XR.MultiplayerARBoilerplates
 
             if (m_RelocalizationMode == RelocalizationMode.Immersal)
             {
-                m_ARSpace = FindFirstObjectByType<ARSpace>();
+                m_XRSpace = FindFirstObjectByType<XRSpace>();
             }
         }
 
@@ -56,10 +57,10 @@ namespace HoloInteractive.XR.MultiplayerARBoilerplates
             {
                 Vector3 absolutePosition = position + rotation * m_SpawnOffset;
                 Quaternion absoluteRotation = rotation;
-                Vector3 relativePosition = m_ARSpace.transform.InverseTransformPoint(absolutePosition);
-                Quaternion relativeRotation = Quaternion.Inverse(m_ARSpace.transform.rotation) * absoluteRotation;
+                Vector3 relativePosition = m_XRSpace.transform.InverseTransformPoint(absolutePosition);
+                Quaternion relativeRotation = Quaternion.Inverse(m_XRSpace.transform.rotation) * absoluteRotation;
 
-                var bullet = Instantiate(m_BulletPrefab, m_ARSpace.transform);
+                var bullet = Instantiate(m_BulletPrefab, m_XRSpace.transform);
                 bullet.transform.localPosition = relativePosition;
                 bullet.transform.localRotation = relativeRotation;
                 bullet.GetComponent<NetworkObject>().SpawnWithOwnership(serverRpcParams.Receive.SenderClientId);

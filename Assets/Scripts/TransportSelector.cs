@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2023 Holo Interactive <dev@holoi.com>
+// SPDX-FileCopyrightText: Copyright 2023 Reality Design Lab <dev@reality.design>
 // SPDX-FileContributor: Yuchen Zhang <yuchenz27@outlook.com>
 // SPDX-License-Identifier: MIT
 
@@ -8,7 +8,7 @@ using Unity.Netcode;
 using Netcode.Transports.MultipeerConnectivity;
 using Unity.Netcode.Transports.UTP;
 
-namespace HoloInteractive.XR.MultiplayerARBoilerplates
+namespace HoloKit.ColocatedMultiplayerBoilerplate
 {
     public enum AvailableTransport
     {

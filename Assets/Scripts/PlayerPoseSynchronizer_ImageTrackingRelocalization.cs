@@ -1,12 +1,13 @@
-// SPDX-FileCopyrightText: Copyright 2023 Holo Interactive <dev@holoi.com>
+// SPDX-FileCopyrightText: Copyright 2023 Reality Design Lab <dev@reality.design>
 // SPDX-FileContributor: Yuchen Zhang <yuchenz27@outlook.com>
+// SPDX-FileContributor: Botao Amber Hu <botao.a.hu@gmail.com>
 // SPDX-License-Identifier: MIT
 
 using UnityEngine;
 using Unity.Netcode;
-using HoloInteractive.XR.HoloKit;
+using HoloKit;
 
-namespace HoloInteractive.XR.MultiplayerARBoilerplates
+namespace HoloKit.ColocatedMultiplayerBoilerplate
 {
     [RequireComponent(typeof(HoloKitMarkManager))]
     public class PlayerPoseSynchronizer_ImageTrackingRelocalization : NetworkBehaviour

@@ -1,13 +1,13 @@
-// SPDX-FileCopyrightText: Copyright 2023 Holo Interactive <dev@holoi.com>
+// SPDX-FileCopyrightText: Copyright 2023 Reality Design Lab <dev@reality.design>
 // SPDX-FileContributor: Yuchen Zhang <yuchenz27@outlook.com>
 // SPDX-License-Identifier: MIT
 
 using UnityEngine;
 using UnityEngine.UI;
-using HoloInteractive.XR.ImageTrackingRelocalization;
-using HoloInteractive.XR.HoloKit;
+using HoloKit.ImageTrackingRelocalization;
+using HoloKit;
 
-namespace HoloInteractive.XR.MultiplayerARBoilerplates
+namespace HoloKit.ColocatedMultiplayerBoilerplate
 {
     public class ExternalMarkerRelocalizationUIController : MonoBehaviour
     {

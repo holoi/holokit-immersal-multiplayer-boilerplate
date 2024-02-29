@@ -1,13 +1,13 @@
-// SPDX-FileCopyrightText: Copyright 2023 Holo Interactive <dev@holoi.com>
+// SPDX-FileCopyrightText: Copyright 2023 Reality Design Lab <dev@reality.design>
 // SPDX-FileContributor: Yuchen Zhang <yuchenz27@outlook.com>
+// SPDX-FileContributor: Botao Amber Hu <botao.a.hu@gmail.com>
 // SPDX-License-Identifier: MIT
 
 using UnityEngine;
 using Unity.Netcode;
-using Immersal.AR;
-using HoloInteractive.XR.HoloKit;
+using Immersal.XR;
 
-namespace HoloInteractive.XR.MultiplayerARBoilerplates
+namespace HoloKit.ColocatedMultiplayerBoilerplate
 {
     /// <summary>
     /// We use this script to synchronize device pose with Immersal SDK.
@@ -21,7 +21,7 @@ namespace HoloInteractive.XR.MultiplayerARBoilerplates
 
         [SerializeField] private float m_RotationLerpSpeed = 5f;
 
-        private ARSpace m_ARSpace;
+        private XRSpace m_XRSpace;
 
         private Transform m_CenterEyePose;
 
@@ -36,22 +36,22 @@ namespace HoloInteractive.XR.MultiplayerARBoilerplates
                 //transform.SetParent(FindObjectOfType<ARMap>().transform);
                 m_CenterEyePose = FindObjectOfType<HoloKitCameraManager>().CenterEyePose;
             }
-            m_ARSpace = FindObjectOfType<ARSpace>();
+            m_XRSpace = FindObjectOfType<XRSpace>();
         }
 
         private void Update()
         {
             if (IsOwner)
             {
-                m_RelativePosition.Value = m_ARSpace.transform.InverseTransformPoint(m_CenterEyePose.position);
-                m_RelativeRotation.Value = Quaternion.Inverse(m_ARSpace.transform.rotation) * m_CenterEyePose.rotation;
+                m_RelativePosition.Value = m_XRSpace.transform.InverseTransformPoint(m_CenterEyePose.position);
+                m_RelativeRotation.Value = Quaternion.Inverse(m_XRSpace.transform.rotation) * m_CenterEyePose.rotation;
             }
         }
 
         private void LateUpdate()
         {
-            Vector3 targetPosition = m_ARSpace.transform.TransformPoint(m_RelativePosition.Value);
-            Quaternion targetRotation = m_ARSpace.transform.rotation * m_RelativeRotation.Value;
+            Vector3 targetPosition = m_XRSpace.transform.TransformPoint(m_RelativePosition.Value);
+            Quaternion targetRotation = m_XRSpace.transform.rotation * m_RelativeRotation.Value;
 
             // Interpolate the position
             transform.position = Vector3.Lerp(transform.position, targetPosition, m_PositionLerpSpeed * Time.deltaTime);
