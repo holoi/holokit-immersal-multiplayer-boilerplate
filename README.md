@@ -1,4 +1,4 @@
-# HoloKit Multiplayer AR Boilerplates
+# HoloKit Multiplayer Boilerplate
 
 ## Overview
 
