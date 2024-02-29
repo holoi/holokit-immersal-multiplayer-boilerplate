@@ -1,4 +1,4 @@
-# HoloKit Multiplayer Boilerplate
+# HoloKit Co-located Multiplayer Boilerplate
 
 ## Overview
 
