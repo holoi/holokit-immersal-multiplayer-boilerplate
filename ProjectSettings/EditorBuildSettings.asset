@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Multiplayer AR Boilerplate_Immersal.unity
     guid: ba9e47e3a93434b30b96cd6a9c5d8546
   - enabled: 1

@@ -2847,7 +2847,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5830478652371543501, guid: 54cb9a8b5c431e84ca2942c39c10b316, type: 3}
-      propertyPath: m_XRSpace
+      propertyPath: m_ARSpace
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5996810100079924804, guid: 54cb9a8b5c431e84ca2942c39c10b316, type: 3}

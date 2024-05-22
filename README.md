@@ -1,4 +1,4 @@
-# HoloKit Co-located Multiplayer Boilerplate
+# Multiplayer Boilerplate for Spontaneous Collocated Mixed Reality
 
 ## Overview
 
@@ -24,8 +24,8 @@ Please be aware that these boilerplates are designed exclusively for iOS devices
 
 We have successfully tested them with the following software versions:
 
-- Unity 2023.2.2f1
-- Xcode 15.1 beta 3
+- Unity 6
+- Xcode 15.4
 
 In theory, other versions of Unity and Xcode that are close to these should also be compatible. However, if you encounter any issues during the build process, feel free to raise an issue in the repository.
 
@@ -112,4 +112,4 @@ For a comprehensive understanding of multiplayer AR, including its concept and i
 
 Designing and implementing a multiplayer AR experience can be a complex endeavor. If you have any questions or suggestions regarding this repository, please don't hesitate to raise an issue. We're here to help and value your input!
 
-For more direct communication, join our community on [Discord](https://discord.gg/9Stseyje), or feel free to email me at yuchenz27@outlook.com. We look forward to your contributions and are excited to see what you create. Thank you!
+For more direct communication, join our community on [Discord](https://discord.gg/9Stseyje), or feel free to email me at [dev@reality.design](mailto:dev@reality.design)  We look forward to your contributions and are excited to see what you create. Thank you!

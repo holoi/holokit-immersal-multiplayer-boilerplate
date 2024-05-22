@@ -635,7 +635,7 @@ MonoBehaviour:
   contentList: []
   m_ContentPrefab: {fileID: 8138649481421858430, guid: 9f3a62c3a64e96a4aa6c44ff209648d4,
     type: 3}
-  m_XRSpace: {fileID: 0}
+  m_ARSpace: {fileID: 0}
   m_Filename: content.json
 --- !u!1 &8641315910235312060
 GameObject:

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4439372, g: 0.49315345, b: 0.5721989, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1631,12 +1631,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &500260534
 GameObject:
   m_ObjectHideFlags: 0
@@ -2834,7 +2834,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3436557592154415685, guid: 72ff80e42abd24e40b2d5898f1b08006, type: 3}
   m_PrefabInstance: {fileID: 7238669779900538339}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7238669779900538340}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 897d5f42d2f87438c945152009467a35, type: 3}
@@ -4105,6 +4105,21 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!115 &1510295636
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: NetworkObject
+  m_Namespace: Unity.Netcode
+  m_AssemblyName: Unity.Netcode.Runtime
 --- !u!1 &1517476308
 GameObject:
   m_ObjectHideFlags: 0
@@ -5145,8 +5160,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7043257140316068168, guid: 7926711ef267d40e2ac180d7955d0b13, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 1490620764358536888}
   m_SourcePrefab: {fileID: 100100000, guid: 7926711ef267d40e2ac180d7955d0b13, type: 3}
+--- !u!1 &1490620764358536887 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7043257140316068168, guid: 7926711ef267d40e2ac180d7955d0b13, type: 3}
+  m_PrefabInstance: {fileID: 1490620764358536886}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1490620764358536888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490620764358536887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1510295636}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 1174118595
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &2861112109309842436
 GameObject:
   m_ObjectHideFlags: 0
@@ -5325,8 +5369,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4107814284031414391, guid: 72ff80e42abd24e40b2d5898f1b08006, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 7238669779900538341}
   m_SourcePrefab: {fileID: 100100000, guid: 72ff80e42abd24e40b2d5898f1b08006, type: 3}
+--- !u!1 &7238669779900538340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4107814284031414391, guid: 72ff80e42abd24e40b2d5898f1b08006, type: 3}
+  m_PrefabInstance: {fileID: 7238669779900538339}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7238669779900538341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7238669779900538340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1510295636}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 3003017182
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1001 &8273154190067076730
 PrefabInstance:
   m_ObjectHideFlags: 0

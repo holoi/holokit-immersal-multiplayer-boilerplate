@@ -24,7 +24,7 @@ namespace Immersal.Samples.ContentPlacement
 
         [SerializeField]
         private GameObject m_ContentPrefab = null;
-        [FormerlySerializedAs("m_XRSpace")] [SerializeField]
+        [FormerlySerializedAs("m_ARSpace")] [SerializeField]
         private Immersal.XR.XRSpace m_XRSpace;
         [SerializeField]
         private string m_Filename = "content.json";

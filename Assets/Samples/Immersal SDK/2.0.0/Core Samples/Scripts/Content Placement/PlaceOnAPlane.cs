@@ -22,7 +22,7 @@ namespace Immersal.Samples.ContentPlacement
     {
         [SerializeField]
         private List<GameObject> m_objects = new List<GameObject>();
-        [FormerlySerializedAs("m_XRSpace")] [SerializeField]
+        [FormerlySerializedAs("m_ARSpace")] [SerializeField]
         private XRSpace m_XRSpace = null;
 
         public void Place(int index)
