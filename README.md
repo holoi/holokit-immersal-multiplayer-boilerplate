@@ -1,22 +1,8 @@
-# Multiplayer Boilerplate for Spontaneous Collocated Mixed Reality
+# HoloField - Multiplayer Boilerplates for Collocated Mixed Reality
 
 ## Overview
 
-This repository provides three multiplayer AR boilerplates, serving as foundations for developing your multiplayer AR projects.
-
-Implementing a multiplayer AR project involves addressing two critical aspects: network communication and coordinate system synchronization. Network communication is essential for exchanging data across connected devices, and coordinate system synchronization ensures that virtual content is rendered consistently in the real-world locations across different devices, each with its own independent local coordinate system.
-
-For networking, our boilerplates utilize [Unity's Netcode for GameObjects](https://docs-multiplayer.unity3d.com/netcode/current/about/) in conjunction with [Apple's Multipeer Connectivity transport package](https://github.com/Unity-Technologies/multiplayer-community-contributions/tree/main/Transports/com.community.netcode.transport.multipeer-connectivity). Netcode for GameObjects is Unity's official solution for multiplayer games, while the MultipeerConnectivity framework, the technology behind AirDrop, enables easy and stable low-latency connections between nearby Apple devices. Beyond the MultipeerConnectivity framework, we also offer a local router transport solution using [Unity Transport package](https://docs.unity3d.com/Packages/com.unity.transport@1.4/manual/index.html). This allows client devices to connect to the host by entering the host's IP address within the local network.
-
-There are primarily two types of AR localization mechanisms: the "cold start" approach and the "absolute coordinate" approach. The "cold start" approach involves the device initiating the AR session without prior knowledge of its surroundings, requiring it to simultaneously construct a virtual map and localize itself within it. In contrast, the "absolute coordinate" approach means the device begins with complete information about its environment, focusing only on relocalizing itself within a pre-constructed map. We have a [specialized article](https://docs.holokit.io/creators/tutorials/tutorial-x-the-concept-and-implementation-of-multiplayer-ar) that explains the concept and implementation of multiplayer AR in detail.
-
-We offer three boilerplates: two for the "cold start" approach and another for the "absolute coordinate" approach. For "cold start" cases, we use the two methods in [Image Tracking Relocalization package](https://github.com/holokit/holokit-image-tracking-relocalization) for coordinate system synchronization. For "absolute coordinate" cases, we employ the [Immersal SDK](https://immersal.gitbook.io/sdk/), which enables users to pre-scan the environment and create point cloud map data on the cloud. This facilitates large-scale pre-scanned AR tracking.
-
-Apart from differing in their approach to coordinate system synchronization, the three boilerplates share a majority of their codebase in other aspects.
-
-These boilerplates are specifically designed for multiplayer AR experiences and require knowledge in networking programming, with a particular emphasis on Unity's Netcode for GameObjects. Multiplayer development fundamentally differs from single-player game development, necessitating a network-centric approach in both design and implementation. For those new to Netcode for GameObjects, we recommend familiarizing yourself with its [documentation](https://docs-multiplayer.unity3d.com/netcode/current/about/).
-
-HoloKit is an optional tool that provides stereoscopic rendering capabilities, but you can build your mobile AR project without HoloKit using these samples. 
+This repository provides three multiplayer collocated AR/MR boilerplates, serving as foundations for developing your multiplayer AR/MR projects.
 
 ## Project Environment
 
@@ -25,9 +11,31 @@ Please be aware that these boilerplates are designed exclusively for iOS devices
 We have successfully tested them with the following software versions:
 
 - Unity 6
-- Xcode 15.4
+- Xcode 16
+- iOS 18
 
 In theory, other versions of Unity and Xcode that are close to these should also be compatible. However, if you encounter any issues during the build process, feel free to raise an issue in the repository.
+
+## Knowledge Prerequisites
+
+Implementing a multiplayer AR/MR project involves addressing two critical aspects: network communication and coordinate system synchronization. Network communication is essential for exchanging data across connected devices, and coordinate system synchronization ensures that virtual content is rendered consistently in the real-world locations across different devices, each with its own independent local coordinate system.
+
+### Network Communication
+For networking, our boilerplates utilize [Unity's Netcode for GameObjects](https://docs-multiplayer.unity3d.com/netcode/current/about/) in conjunction with [Apple's Multipeer Connectivity transport package](https://github.com/Unity-Technologies/multiplayer-community-contributions/tree/main/Transports/com.community.netcode.transport.multipeer-connectivity). Netcode for GameObjects is Unity's official solution for multiplayer games, while the MultipeerConnectivity framework, the technology behind AirDrop, enables easy and stable low-latency connections between nearby Apple devices. Alternative to the MultipeerConnectivity framework, we also offer a local router-based transport solution using [Unity Transport package](https://docs.unity3d.com/Packages/com.unity.transport@2.3/manual/index.html). This allows client devices to connect to the host by entering the host's IP address within the local network.
+
+### Coordinate system synchronization
+
+There are primarily two types of AR localization mechanisms: the "spontaneous" approach and the "situated" approach. The "spontaneous" approach involves the device initiating the AR session without prior knowledge of its surroundings, requiring it to simultaneously construct a virtual map and localize itself within it. In contrast, the "situated" approach means the device begins with complete information about its environment, focusing only on relocalizing itself within a pre-constructed map. We have a [specialized article](https://docs.holokit.io/creators/tutorials/tutorial-x-the-concept-and-implementation-of-multiplayer-ar) that explains the concept and implementation of multiplayer AR in detail.
+
+## Boilerplates
+
+We offer three boilerplates: two for the "spontaneous" approach and another for the "situated" approach. For "spontaneous" cases, we use the two methods in [Image Tracking Relocalization package](https://github.com/holokit/holokit-image-tracking-relocalization) for coordinate system synchronization. For "situated" cases, we employ the [Immersal SDK](https://immersal.gitbook.io/sdk/), which enables users to pre-scan the environment and create point cloud map data on the cloud. This facilitates large-scale pre-scanned AR tracking.
+
+Apart from differing in their approach to coordinate system synchronization, the three boilerplates share a majority of their codebase in other aspects.
+
+These boilerplates are specifically designed for multiplayer AR experiences and require knowledge in networking programming, with a particular emphasis on Unity's Netcode for GameObjects. Multiplayer development fundamentally differs from single-player game development, necessitating a network-centric approach in both design and implementation. For those new to Netcode for GameObjects, we recommend familiarizing yourself with its [documentation](https://docs-multiplayer.unity3d.com/netcode/current/about/).
+
+HoloKit is an optional tool that provides stereoscopic rendering mixed reality capabilities, but you can build your mobile AR project without HoloKit using these samples. 
 
 ## External Marker Relocalizaion Boilerplate
 
@@ -41,7 +49,7 @@ To start, open the scene `Assets/Scenes/Multiplayer AR Boilerplate_External Mark
 
 For comprehensive details on the external marker relocalization method, refer to the README of the [image tracking relocalization package](https://github.com/holokit/holokit-image-tracking-relocalization).
 
-## Dynamically Rendered Marker Relocalization Boilerplate
+### Dynamically Rendered Marker Relocalization Boilerplate
 
 This boilerplate utilizes MultipeerConnectivity for its network transport layer and employs a dynamically rendered marker relocalization method for coordinate system synchronization. Unlike external marker relocalization, which relies on a physical marker, this approach enables multiplayer AR experience in any location. Client devices track a marker displayed on the host device's screen, rather than an external marker. The synchronization process aligns the client devices' coordinate origins with that of the host. This ensures that virtual objects, assigned specific coordinates, appear at the same physical locations on both host the client devices.
 
@@ -53,7 +61,7 @@ To get started, navigate to `Assets/Scenes/Multiplayer AR Boilerplate_Image Trac
 
 For a detailed understanding of how the dynamically rendered marker re-localizatioin method functions, please refer to the README file of the [image tracking relocalization package](https://github.com/holokit/holokit-image-tracking-relocalization).
 
-## Immersal Boilerplate
+### Immersal Boilerplate
 
 This boilerplate offers two network transport layers: MultipeerConnectivity and a local router connection using the [Unity Transport package](https://docs.unity3d.com/Packages/com.unity.transport@1.4/manual/index.html). For coordinate system synchronization, it utilizes the Immersal SDK. Beyond these features, it provides the same functionality as the previous boilerplate.
 
@@ -65,7 +73,7 @@ Coordinate system synchronization is executed through the Immersal SDK's functio
 
 To begin, navigate to `Assets/Scenes/Multiplayer AR Boilerplate_Immersal.unity`. You'll need to scan, upload, and download your Immersal map via the Immersal Mapper App and the [Immersal Developer Portal](https://developers.immersal.com/). If scanning an Immersal map is unfamiliar to you, the [Immersal documentation](https://immersal.gitbook.io/sdk/) provides a detailed guide. Once the map file is downloaded, import it into the Unity project and place it in the `MapFile` slot of the `ARMap` script, as demonstrated below.
 
-<img width="700" alt="multiplayer ar" src="https://github.com/holokit/holokit-immersal-multiplayer-boilerplate/assets/44870300/81558c73-d0ca-4e39-abe2-182f0ea7233f">
+<img width="700" alt="multiplayer ar" src="https://github.com/holokit/holokit-colocated-multiplayer-boilerplate/assets/44870300/81558c73-d0ca-4e39-abe2-182f0ea7233f">
 
 After building the project onto your iOS devices, successful relocalization by the Immersal SDK will enable the HoloKit markers to be rendered accurately atop each connected devices.
 
@@ -100,11 +108,11 @@ Transitioning from a local router connection to using Unity Relay with Unity Tra
 
 ## Which Coordinate System Synchronization Method Should You Use
 
-The selection of a coordinate system synchronization method should align with your project's unique requirements. If your project involves a "cold start" scenario, then two methods from the image tracking relocalization package are appropriate. Conversely, for projects requiring "absolute coordinate", the Immersal SDK is the better option.
+The selection of a coordinate system synchronization method should align with your project's unique requirements. If your project involves a "spontaneous" scenario, then two methods from the image tracking relocalization package are appropriate. Conversely, for projects requiring "situated", the Immersal SDK is the better option.
 
-To elaborate, "cold start" is preferable for AR projects targeting a general audience. This approach is ideal because it doesn't assume that the majority of users will visit a specific location to engage with your AR game. The primary benefit of "cold start" AR is its ability to be experienced anywhere, making it widely accessible. The selection between external marker and dynamically rendered marker relocalization methods should be based on your specific environment and project needs. The external marker method offers a more straightforward setup, as it operates independently, unlike the dynamically rendered approach that requires all client devices to scan the marker on the host's screen. Additionally, the external marker method is more error-tolerant. AR tracking often becomes inaccurate, and an external marker allows for easier and more frequent relocalization during a session without interrupting the host device, in contrast to using a host device-displayed marker. Therefore, for projects involving more than three devices with an accessible external marker, the external marker approach is typically more advantageous. Conversely, for projects with only two or three devices where an external marker is not feasible, the dynamically rendered marker method is preferable.
+To elaborate, "spontaneous" is preferable for AR projects targeting a general audience. This approach is ideal because it doesn't assume that the majority of users will visit a specific location to engage with your AR game. The primary benefit of "spontaneous" AR is its ability to be experienced anywhere, making it widely accessible. The selection between external marker and dynamically rendered marker relocalization methods should be based on your specific environment and project needs. The external marker method offers a more straightforward setup, as it operates independently, unlike the dynamically rendered approach that requires all client devices to scan the marker on the host's screen. Additionally, the external marker method is more error-tolerant. AR tracking often becomes inaccurate, and an external marker allows for easier and more frequent relocalization during a session without interrupting the host device, in contrast to using a host device-displayed marker. Therefore, for projects involving more than three devices with an accessible external marker, the external marker approach is typically more advantageous. Conversely, for projects with only two or three devices where an external marker is not feasible, the dynamically rendered marker method is preferable.
 
-If your AR project is tailored for specific events, such as exhibitions or museum displays, the "absolute coordinate" approach is recommended. Utilizing a pre-scanned AR map provides more accurate and robust tracking compared to "cold start" setups. This method enables AR experiences in larger spaces, surpassing the room-scale limitations typical of "cold start" projects.
+If your AR project is tailored for specific events, such as exhibitions or museum displays, the "situated" approach is recommended. Utilizing a pre-scanned AR map provides more accurate and robust tracking compared to "spontaneous" setups. This method enables AR experiences in larger spaces, surpassing the room-scale limitations typical of "spontaneous" projects.
 
 For a comprehensive understanding of multiplayer AR, including its concept and implementation, we recommend reading this [specialized article](https://docs.holokit.io/creators/tutorials/tutorial-x-the-concept-and-implementation-of-multiplayer-ar) on the subject.
 
@@ -113,3 +121,9 @@ For a comprehensive understanding of multiplayer AR, including its concept and i
 Designing and implementing a multiplayer AR experience can be a complex endeavor. If you have any questions or suggestions regarding this repository, please don't hesitate to raise an issue. We're here to help and value your input!
 
 For more direct communication, join our community on [Discord](https://discord.gg/9Stseyje), or feel free to email me at [dev@reality.design](mailto:dev@reality.design)  We look forward to your contributions and are excited to see what you create. Thank you!
+
+## Troubleshooting
+
+### TextMesh Pro Essential Resources are missing. 
+
+To resolve this issue, you need to import the TextMesh Pro Essential Resources. This can be done through the Unity Editor by navigating to the menu bar at the top of the screen. From there, you should select `Window`, then `TextMeshPro`, and finally `Import TMP Essential Resources`. This action will automatically import the required assets into your project, ensuring that TextMesh Pro operates smoothly and as expected.
