@@ -10,9 +10,9 @@ Please be aware that these boilerplates are designed exclusively for iOS devices
 
 We have successfully tested them with the following software versions:
 
-- Unity 6
-- Xcode 16
-- iOS 18
+- Unity 2022.3 LTS
+- Xcode 15
+- iOS 17
 
 In theory, other versions of Unity and Xcode that are close to these should also be compatible. However, if you encounter any issues during the build process, feel free to raise an issue in the repository.
 
